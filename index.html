@@ -262,19 +262,18 @@ createExplosion();
 
 setTimeout(()=>{
 
-document.querySelector(".card").innerHTML = `
+document.getElementById("answer").innerHTML = `
 
-<div style="animation:fadeIn 1.5s ease">
-
-<h1 style="font-size:120px;">❤️</h1>
-
-<h1>Надя ❤️</h1>
-
-<p style="
+<div style="
+margin-top:20px;
 font-size:32px;
 line-height:1.8;
-margin-top:20px;
+animation:fadeIn 1.5s ease;
 ">
+
+💖 Надя ❤️
+
+<br><br>
 
 Ты только что сделала меня
 самым счастливым человеком ❤️
@@ -283,18 +282,11 @@ margin-top:20px;
 
 Жду тебя 26.06.2026
 
-<br><br>
-
-✨ Наше свидание подтверждено ✨
-
-</p>
-
 </div>
 
 `;
 
 },2500);
-
 }
 
 function createExplosion(){
