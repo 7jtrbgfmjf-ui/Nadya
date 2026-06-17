@@ -184,7 +184,7 @@ transform:translateY(0);
 
 <div id="answer"></div>
 
-<audio id="loveSong">
+<audio id="loveSong" loop preload="auto">
 <source src="music.mp3" type="audio/mpeg">
 </audio>
 
@@ -253,7 +253,24 @@ noBtn.style.top = randomY + "px";
 
 function accept(){
 
-document.getElementById("loveSong").play();
+const song = document.getElementById("loveSong");
+
+song.currentTime = 0;
+song.loop = true;
+
+song.play().catch(err=>{
+console.log(err);
+});
+
+const buttons = document.querySelector(".buttons");
+
+buttons.style.transition = "all .8s ease";
+buttons.style.opacity = "0";
+buttons.style.transform = "translateY(40px)";
+
+setTimeout(()=>{
+buttons.remove();
+},800);
 
 document.getElementById("answer").innerHTML =
 "💖 Надя, наше свидание подтверждено! 💖";
@@ -262,13 +279,15 @@ createExplosion();
 
 setTimeout(()=>{
 
-document.getElementById("answer").innerHTML = `
+document.getElementById("timer").style.display = "none";
+
+document.querySelector(".message").innerHTML = `
 
 <div style="
-margin-top:20px;
-font-size:32px;
+font-size:34px;
 line-height:1.8;
 animation:fadeIn 1.5s ease;
+text-align:center;
 ">
 
 💖 Надя ❤️
@@ -280,13 +299,25 @@ animation:fadeIn 1.5s ease;
 
 <br><br>
 
-Жду тебя 26.06.2026
+С тобой хочется чаще улыбаться,
+чаще мечтать и чаще быть рядом.
+
+<br><br>
+
+✨ Жду тебя 26.06.2026 ✨
+
+<br><br>
+
+❤️ Наше свидание подтверждено ❤️
 
 </div>
 
 `;
 
+document.getElementById("answer").innerHTML = "";
+
 },2500);
+
 }
 
 function createExplosion(){
